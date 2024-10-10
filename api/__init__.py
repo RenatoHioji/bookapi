@@ -7,7 +7,7 @@ from flask_marshmallow import Marshmallow
 app = Flask(__name__)
 
 # Definindo o endereço do banco
-app.config["MONGO_URI"] = 'mongodb://localhost:27017/api_games'
+app.config["MONGO_URI"] = 'mongodb://localhost:27017/books'
 
 # Criando a instância de Api do flask_restful e passando o Flask
 api = Api(app)
@@ -18,4 +18,4 @@ mongo = PyMongo(app)
 # Criando a instância do Marshmallow
 ma = Marshmallow(app)
 
-from .resources import game_resource
+from .resources import book_resource

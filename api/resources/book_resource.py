@@ -32,7 +32,7 @@ class BookDetail(Resource):
         return make_response(bookschema.jsonify(book), 200) 
     
     def put(self, id):
-        book_existed = BookService.get_game_by_id(id)
+        book_existed = BookService.get_book_by_id(id)
         if book_existed is None:
             return make_response(jsonify("Livro não foi encontrado."), 404)
         bookschema = book_schema.BookSchema()
@@ -42,7 +42,7 @@ class BookDetail(Resource):
         else:
             json_data = request.get_json()
             new_book = book_model.Book(**json_data)
-            updated_book = GameService.update_book(new_book, id)
+            updated_book = BookService.update_book(new_book, id)
             return make_response(bookschema.jsonify(updated_book), 200)
         
     def delete(self, id):
